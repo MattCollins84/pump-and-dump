@@ -1,0 +1,26 @@
+{
+  "name": "pump-and-dump",
+  "version": "1.0.0",
+  "description": "pump and dump twitter analysis",
+  "main": "app.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattCollins84/pump-and-dump.git"
+  },
+  "author": "matt@strikesandgutters.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MattCollins84/pump-and-dump/issues"
+  },
+  "homepage": "https://github.com/MattCollins84/pump-and-dump#readme",
+  "devDependencies": {},
+  "dependencies": {
+    "async": "^2.5.0",
+    "body-parser": "^1.17.2",
+    "express": "^4.15.4",
+    "optimist": "^0.6.1",
+    "sentiment": "^4.0.0",
+    "twitter": "^1.7.1"
+  }
+}
