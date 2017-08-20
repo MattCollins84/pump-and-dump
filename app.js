@@ -11,7 +11,7 @@ const tweets = [];
 // twitter module
 const twitter = require('./lib/twitter');
 const tweetData = require('./lib/tweet-data');
-
+setInterval(tweetData.process, 60000);
 // get the IDs of our twitter users
 const twitterUsers = twitter.users.reduce(function(acc, i) { 
   acc.push(i.id);
@@ -43,6 +43,20 @@ app.get('/tweets', function(req, res) {
 });
 
 app.get('/stocks', function(req, res) {
+  const expired = req.query.expired ? true : false;
+  let stocks = tweetData.data.stocks;
+  let remove = [];
+  if (expired === false) {
+    for (let stock in stocks) {
+      if (stocks[stock].expired === true) {
+        remove.push(stock);
+      }
+    }
+    remove.forEach(r => {
+      delete stocks[r];
+    })
+  }
+
   return res.send(tweetData.data.stocks);
 });
 
@@ -64,10 +78,10 @@ app.get('/account', function (req, res) {
 
     return res.send(data);
 
-  })
+  });
 
 });
 
 app.listen(3000, function () {
-  console.log('Example app listening on port 3000!')
+  console.log('listening on port 3000!')
 });
